@@ -89,6 +89,12 @@ header {
   align-items: center;
 }
 
+header a {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  height: 40px;
+}
+
 footer {
   text-align: center;
 }
@@ -106,11 +112,11 @@ footer a {
   cursor: pointer;
 }
 
-#nav a {
-  margin-right: 0.5em;
+nav a {
+  margin-right: 1rem;
   text-decoration: none;
 }
 
-#nav a:hover {
+nav a:hover {
   text-decoration: underline;
 }

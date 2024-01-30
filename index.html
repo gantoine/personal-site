@@ -11,7 +11,7 @@
   <title>Georges-Antoine's website</title>
   <meta property="og:title" content="Georges-Antoine's website" />
   <meta property="og:description" content="Growth engineer, open-source maintainer, and homelab enthusiast" />
-  <meta property="og:image" content="https://gantoine.com/assets/logo.png" />
+  <meta property="og:image" content="https://gantoine.com/assets/logo.webp" />
   <meta property="og:url" content="https://gantoine.com" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Georges-Antoine's website" />
@@ -21,8 +21,11 @@
   <meta name="title" content="Georges-Antoine's website" />
   <meta name="description" content="Growth engineer, open-source maintainer, and homelab enthusiast" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="assets/common.css" />
-  <link rel="stylesheet" href="assets/font-awesome.min.css" />
+  <link rel="preload" href="assets/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/font-awesome.min.css" /></noscript>
+
   <script async src="assets/common.js"></script>
   <script defer src="https://eu.umami.is/script.js" data-website-id="08dcb125-345a-4e92-8f27-456a61c4f879"></script>
   <style>
@@ -35,19 +38,24 @@
 <body>
   <main>
     <header>
-      <img src="/assets/logo.png" alt="drawing of a flower in a gear" loading="lazy" width="40">
+      <a href="https://gantoine.com">
+        <img src="assets/logo.webp" alt="drawing of a plant in a gear" loading="lazy" width="40" height="40">
+      </a>
       <div>
+        <a class="iconlink" href="https://github.com/gantoine/personal-site" aria-label="github">
+          <i class="fa-brands fa-github"></i>
+        </a>
         <button id="theme-button" type="button" aria-label="Change theme">
           <i class="fa fa-sun"></i>
         </button>
       </div>
     </header>
-
+    
     <h1 id="growth-engineering">
       Hi, and welcome!
     </h1>
 
-    <div id="nav">
+    <nav>
       <a href="/talks/cusec-2024">CUSEC 2024</a>
       <a href="#" class="disabled" aria-disabled="true">Blog</a>
       <a href="#" class="disabled" aria-disabled="true">Software</a>
