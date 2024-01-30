@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <title>Growth Engineering CUSEC 2024</title>
+  <link rel="canonical" href="https://www.gantoine.com/talks/cusec-2024" />
+  <link rel="shortcut icon" href="https://www.gantoine.com/favicon.ico">
+  <meta name="title" content="Growth Engineering CUSEC 2024" />
+  <meta name="description" content="Growth Engineering: The Art and Science of Making Things People Love" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.gantoine.com/assets/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://www.gantoine.com/assets/common.css" />
+  <script defer src="https://eu.umami.is/script.js" data-website-id="08dcb125-345a-4e92-8f27-456a61c4f879"></script>
+  <style>
+    .socials a {
+      margin: 0.5rem;
+    }
+
+    #cusec-2024 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #play-area {
+      width: 100%;
+      height: 432px;
+      margin-top: 3rem;
+      background-image: url("./assets/dark-title-card.jpeg");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #fellow-summer-intership-2024 {
+      margin-top: 3rem;
+    }
+  </style>
+  <script>
+    function buildIframe(id, src) {
+      const iframe = document.createElement("iframe");
+      iframe.width = "100%";
+      iframe.height = "432px";
+      iframe.title = "Slides from CUSEC talk";
+      iframe.src = src;
+      iframe.id = id;
+      return iframe;
+    }
+
+    const themeData = {
+      dark: {
+        slides: "https://www.gantoine.com/talks/cusec-2024/slides/dark/#0",
+        frame: buildIframe("frame-dark", "https://www.gantoine.com/talks/cusec-2024/slides/dark/#0"),
+        icon: "fa-sun"
+      },
+      light: {
+        slides: "https://www.gantoine.com/talks/cusec-2024/slides/light/#0",
+        frame: buildIframe("frame-light", "https://www.gantoine.com/talks/cusec-2024/slides/light/#0"),
+        icon: "fa-moon"
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const slidesLink = document.querySelector("#slides-link");
+      const playArea = document.querySelector("#play-area");
+      const themeIcon = document.querySelector("#theme-button i");
+
+      function setTheme(oldTheme, newTheme) {
+        localStorage.setItem("theme", newTheme);
+        document.querySelector("html").setAttribute("data-theme", newTheme);
+        playArea.style.backgroundImage = `url('./assets/${newTheme}-title-card.jpeg')`;
+
+        slidesLink.href = themeData[newTheme].slides;
+        themeIcon.classList.replace(themeData[oldTheme].icon, themeData[newTheme].icon);
+
+        if (themeData[oldTheme].frame.contentWindow) {
+          const { href } = themeData[oldTheme].frame.contentWindow.location;
+          themeData[newTheme].frame.src = href.replace(oldTheme, newTheme);
+        }
+        themeData[oldTheme].frame.remove();
+        playArea.appendChild(themeData[newTheme].frame);
+      }
+
+      function swapTheme() {
+        const oldTheme = localStorage.getItem("theme");
+        setTheme(oldTheme, oldTheme === "dark" ? "light" : "dark");
+      }
+
+      const match = window.matchMedia("(prefers-color-scheme: dark)");
+      (function () {
+        const storedTheme = localStorage.getItem("theme") ?? match.matches ? "dark" : "light";
+        setTheme(storedTheme, storedTheme)
+      })()
+
+      // Listen for changes to the user's color scheme preference
+      match.addEventListener("change", (e) => {
+        const newColorScheme = e.matches ? "dark" : "light";
+        const storedTheme = localStorage.getItem("theme");
+        if (!storedTheme || storedTheme !== newColorScheme) swapTheme();
+      });
+
+      const themeButton = document.querySelector("#theme-button");
+      themeButton.addEventListener("click", swapTheme);
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <h3 id="cusec-2024">
+      CUSEC 2024
+      <div>
+        <a class="iconlink" href="https://github.com/gantoine/cusec-2024" aria-label="github">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <button id="theme-button" type="button" aria-label="Change theme">
+          <i class="fa fa-sun"></i>
+        </button>
+
+      </div>
+    </h3>
+
+    <h1 id="growth-engineering">
+      Growth Engineering: The Art and Science of Making Things People Love
+    </h1>
+
+    <div id="play-area"></div>
+
+    <small>
+      View the animated slides in
+      <a id="slides-link" target="_blank">full screen</a>
+      or
+      <a href="https://www.gantoine.com/talks/cusec-2024/Growth%20Engineering%20CUSEC%202024.pdf" target="_blank">download the
+        PDF</a>
+      version
+    </small>
+
+    <h3 id="fellow-summer-intership-2024">Fellow summer intership 2024</h3>
+    <p>
+      Fellow is hiring Software Engineering interns and co-op students for the
+      summer term (May-August 2024). Find out what it&#39;s like to
+      <a target="_blank" href="https://fellow.app/careers/">work at Fellow</a>
+      and check out the
+      <a target="_blank" href="https://fellowapp.bamboohr.com/careers/83?source=aWQ9NTE%3D">
+        job posting</a>.
+    </p>
+
+    <h3 id="where-to-find-me">Where to find me</h3>
+    <div class="socials">
+      <a class="iconlink" href="https://github.com/gantoine" aria-label="github">
+        <i class="fa-brands fa-github fa-2x"></i>
+      </a>
+      <a class="iconlink" href="https://hachyderm.io/@georges" aria-label="mastodon">
+        <i class="fa-brands fa-mastodon fa-2x"></i>
+      </a>
+      <a class="iconlink" href="https://discordlookup.com/user/76729811447320576" aria-label="discord">
+        <i class="fa-brands fa-discord fa-2x"></i>
+      </a>
+      <a class="iconlink" href="mailto:cusec@me.gantoine.com" aria-label="e-mail">
+        <i class="fa-solid fa-envelope fa-2x"></i>
+      </a>
+    </div>
+
+    <h3 id="resources">Resources</h3>
+    <ul>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://www.growthengblog.com/">Jeff Chang&#39;s blog</a>
+        (defunct but still great)
+      </li>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://growth.design/case-studies">Growth.Design</a>
+        (awesome series of case studies)
+      </li>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://github.com/growthbook/growthbook">Growthbook</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://userpilot.com/blog/">Userpilot blog</a>
+        (one of the few newsletters I follow)
+      </li>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://www.reforge.com/blog">Reforge blog</a>
+      </li>
+    </ul>
+
+    <h3 id="reading-list">Reading list</h3>
+    <ul>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://productled.com/">The Product Led Books</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://www.nirandfar.com/hooked/">
+          Hooked: How to Build Habit-Forming Products
+        </a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener toreferer" href="https://www.engguidebook.com/">
+          The Software Engineer&#39;s Guidebook
+        </a>
+      </li>
+    </ul>
+
+    <h3 id="glossary">
+      Glossary
+    </h3>
+    <ul>
+      <li>
+        <strong>Activation</strong>: The first time a user experiences the core value of your product
+      </li>
+      <li>
+        <strong>Acquisition</strong>: The rate at which users sign up for your product
+      </li>
+      <li>
+        <strong>Retention</strong>: The rate at which users continue using your product
+      </li>
+      <li>
+        <strong>Referral</strong>: The rate at which users invite other users to your product
+      </li>
+      <li>
+        <strong>Revenue</strong>: The rate at which users pay for your product
+      </li>
+      <li>
+        <strong>Cohort</strong>: A group of users who share a common characteristic
+      </li>
+      <li>
+        <strong>Funnel</strong>: A series of steps that users take to complete a goal
+      </li>
+      <li>
+        <strong>Paywall</strong>: A barrier that prevents users from accessing content without paying
+      </li>
+      <li>
+        <strong>Dark pattern</strong>: A user interface that has been carefully crafted to trick users into doing
+        things, such as buying insurance with their purchase or signing up for recurring bills
+      </li>
+      <li>
+        <strong>PII</strong>: Personally identifiable information, such as name, email, address, phone number, etc.
+      </li>
+    </ul>
+  </main>
+</body>
+
+</html>
